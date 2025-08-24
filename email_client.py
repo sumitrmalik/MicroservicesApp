@@ -21,7 +21,7 @@ import demo_pb2_grpc
 
 from logger import getJSONLogger
 logger = getJSONLogger('emailservice-client')
-print("hi")
+
 def send_confirmation_email(email, order):
   channel = grpc.insecure_channel('[::]:8080')
   stub = demo_pb2_grpc.EmailServiceStub(channel)
@@ -37,3 +37,4 @@ def send_confirmation_email(email, order):
 
 if __name__ == '__main__':
   logger.info('Client for email service.')
+
