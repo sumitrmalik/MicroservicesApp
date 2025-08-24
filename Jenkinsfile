@@ -8,7 +8,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                        sh "docker build -t jinny1/paymentservice:latest ."
+                        sh "docker build -t sumitrmalik/paymentservice:latest ."
                     }
                 }
             }
@@ -18,10 +18,11 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                        sh "docker push jinny1/paymentservice:latest "
+                        sh "docker push sumitrmalik/paymentservice:latest "
                     }
                 }
             }
         }
     }
 }
+
