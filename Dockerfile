@@ -18,13 +18,12 @@ WORKDIR /app
 
 COPY ["build.gradle", "gradlew", "./"]
 COPY gradle gradle
-# RUN chmod +x gradlew
-# RUN set -x && ls -l gradlew
-RUN set -x && chmod +x gradlew && ./gradlew downloadRepos
+RUN chmod +x gradlew
+RUN ./gradlew downloadRepos
 
 COPY . .
-# RUN chmod +x gradlew
-RUN set -x && chmod +x gradlew && ./gradlew installDist
+RUN chmod +x gradlew
+RUN ./gradlew installDist
 
 FROM eclipse-temurin:19.0.1_10-jre-alpine@sha256:a75ea64f676041562cd7d3a54a9764bbfb357b2bf1bebf46e2af73e62d32e36c as without-grpc-health-probe-bin
 
@@ -48,6 +47,7 @@ FROM without-grpc-health-probe-bin
 ENV GRPC_HEALTH_PROBE_VERSION=v0.4.18
 RUN wget -qO/bin/grpc_health_probe https://github.com/grpc-ecosystem/grpc-health-probe/releases/download/${GRPC_HEALTH_PROBE_VERSION}/grpc_health_probe-linux-amd64 && \
     chmod +x /bin/grpc_health_probe
+
 
 
 
