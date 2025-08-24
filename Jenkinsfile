@@ -8,7 +8,7 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                        sh "docker build -t jinny1/productcatalogservice:latest ."
+                        sh "docker build -t sumitrmalik/productcatalogservice:latest ."
                     }
                 }
             }
@@ -18,10 +18,11 @@ pipeline {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
-                        sh "docker push jinny1/productcatalogservice:latest "
+                        sh "docker push sumitrmalik/productcatalogservice:latest "
                     }
                 }
             }
         }
     }
 }
+
